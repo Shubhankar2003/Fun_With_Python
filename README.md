@@ -10,7 +10,7 @@ This repository is a collection of Python scripts and projects that I'm working 
 
 To get started, simply clone this repository to your local machine:
 
-git clone https://github.com/Shubhankar2003/fun-with-python.git
+git clone https://github.com/Shubhankar2003/Fun_With_Python
 
 Feel free to explore the different directories and scripts. Each script may have its own README or comments to help you understand its purpose and usage.
 
