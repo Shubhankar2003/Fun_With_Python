@@ -36,6 +36,3 @@ for folderName, subfolders, filenames in os.walk(p/'Downloads'):
             src_path =  Path(folderName)/filename
             dest_path = rand_folder/filename
             shutil.move(src_path, dest_path)
-
-
-print(''' Moved all files to designated folders ''')
