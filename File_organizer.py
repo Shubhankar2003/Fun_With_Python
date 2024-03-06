@@ -1,4 +1,5 @@
-import shutil, os
+from os import walk, path
+from shutil import move
 from pathlib import Path
 p = Path.home()
 pdf_folder = p / 'Downloads' / 'PDF'
@@ -14,22 +15,22 @@ video_folder.mkdir(exist_ok=True) # Ensure 'Videos' folder exists or create it i
 rand_folder.mkdir(exist_ok=True) # Ensure 'Random' folder exists or create it if not
 
 
-for folderName, subfolders, filenames in os.walk(p/'Downloads'):
+for folderName, subfolders, filenames in walk(p/'Downloads'):
     for filename in filenames:
         src_path =  Path(folderName)/filename
-        if os.path.isfile(src_path):
+        if path.isfile(src_path):
             if filename.endswith('.pdf'):
                 dest_path = pdf_folder/filename
-                shutil.move(src_path, dest_path)
+                move(src_path, dest_path)
             elif filename.endswith(('.jpg', '.jpeg', '.png', '.webp', '.heic')):
                 dest_path = photo_folder/filename
-                shutil.move(src_path, dest_path)
+                move(src_path, dest_path)
             elif filename.endswith(('.mp3', '.aac')):
                 dest_path = music_folder/filename
-                shutil.move(src_path, dest_path)
+                move(src_path, dest_path)
             elif filename.endswith(('.mp4', '.mov')):
                 dest_path = video_folder/filename
-                shutil.move(src_path, dest_path)
+                move(src_path, dest_path)
             else:
                 dest_path = rand_folder/filename
-                shutil.move(src_path, dest_path)
+                move(src_path, dest_path)
