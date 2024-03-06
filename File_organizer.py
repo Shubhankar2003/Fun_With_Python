@@ -16,23 +16,20 @@ rand_folder.mkdir(exist_ok=True) # Ensure 'Random' folder exists or create it if
 
 for folderName, subfolders, filenames in os.walk(p/'Downloads'):
     for filename in filenames:
-        if filename.endswith('.pdf'):
-            src_path =  Path(folderName)/filename
-            dest_path = pdf_folder/filename
-            shutil.move(src_path, dest_path)
-        elif filename.endswith(('.jpg', '.jpeg', '.png', '.webp', '.heic')):
-            src_path =  Path(folderName)/filename
-            dest_path = photo_folder/filename
-            shutil.move(src_path, dest_path)
-        elif filename.endswith(('.mp3', '.aac')):
-            src_path =  Path(folderName)/filename
-            dest_path = music_folder/filename
-            shutil.move(src_path, dest_path)
-        elif filename.endswith(('.mp4', '.mov')):
-            src_path =  Path(folderName)/filename
-            dest_path = video_folder/filename
-            shutil.move(src_path, dest_path)
-        else:
-            src_path =  Path(folderName)/filename
-            dest_path = rand_folder/filename
-            shutil.move(src_path, dest_path)
+        src_path =  Path(folderName)/filename
+        if os.path.isfile(src_path):
+            if filename.endswith('.pdf'):
+                dest_path = pdf_folder/filename
+                shutil.move(src_path, dest_path)
+            elif filename.endswith(('.jpg', '.jpeg', '.png', '.webp', '.heic')):
+                dest_path = photo_folder/filename
+                shutil.move(src_path, dest_path)
+            elif filename.endswith(('.mp3', '.aac')):
+                dest_path = music_folder/filename
+                shutil.move(src_path, dest_path)
+            elif filename.endswith(('.mp4', '.mov')):
+                dest_path = video_folder/filename
+                shutil.move(src_path, dest_path)
+            else:
+                dest_path = rand_folder/filename
+                shutil.move(src_path, dest_path)
